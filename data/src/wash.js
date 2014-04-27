@@ -20,7 +20,13 @@ process.argv.slice( 2 ).forEach( function( val ) {
 		if( data.length == 3 ) {
 
 			var name = data[0],
-				city = data[2].slice( 0, 3 );
+				addr = data[2].match( /(..(縣|市))/ );
+
+			if( !addr || addr.length == 0 ) {
+				return;
+			}
+
+			var city = addr[0];
 
 			if( !( city in orgMap ) ) {
 				orgMap[ city ] = [];
