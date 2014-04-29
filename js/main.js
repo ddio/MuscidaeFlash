@@ -6,7 +6,8 @@ var ST_URL = 'https://script.google.com/macros/s/AKfycbwFse-INUkS6qvZ2waHiBYe_sk
 function ViewModel() {
 
 	this.geoMap = {};
-	this.hospitals = ko.observable();
+	this.hospitals = ko.observable([]);
+	this.totalComments = ko.observable(0);
 
 	this.map = new google.maps.Map( document.getElementById( 'map-canvas' ) );
 
@@ -19,7 +20,8 @@ function ViewModel() {
 		this.geoMap = resp.map;
 
 		var dict = resp.map.hospitals,
-			newHospitals = _.clone( resp.map.locations );
+			newHospitals = _.clone( resp.map.locations ),
+			totalComments = 0;
 
 		_.each( newHospitals, function( hospital, id ) {
 			hospital.id = id;
@@ -27,17 +29,22 @@ function ViewModel() {
 		});
 
 		_.each( resp.comments, function( hospital ) {
+
 			var fullname = hospital.city + hospital.name;
 			if( fullname in dict ) {
 				var comments = newHospitals[ dict[fullname].id ].comments;
 				comments.push.apply( comments, hospital.comments );
 			}
+			totalComments += hospital.comments.length;
+
 		}, this);
 
 		this.hospitals(
 			_.sortBy( newHospitals, function( hospital ) { 
 				return hospital.comments.length * -1; 
 			}));
+
+		this.totalComments( totalComments );
 
 		this.initMap();
 	});
@@ -47,15 +54,27 @@ function ViewModel() {
 ViewModel.prototype.initMap = function() {
 
 	var targetItems = this.hospitals().slice( 0, MAX_N_HOSPITAL ),
+		iconSizes = [ 100, 70, 50, 30 ],
 		boundry = new google.maps.LatLngBounds();
 
 	_.each( targetItems, function( item, i ) {
 
-		var position = new google.maps.LatLng( item.lat, item.lng ),
+		var iconSize = iconSizes[i];
+
+		if( i >= iconSizes.length ) {
+			iconSize = _.last( iconSizes );
+		}
+
+		var icon = new google.maps.MarkerImage( 
+				new google.maps.Size( iconSize, iconSize ),
+				new google.maps.Point(0,0)
+			),
+			position = new google.maps.LatLng( item.lat, item.lng ),
 			marker = new google.maps.Marker({
 				title: item.hospital,
 				position: position,
-				map: this.map
+				map: this.map,
+				icon: 'images/marker.'+iconSize+'.png'
 			});
 
 		boundry.extend( position );

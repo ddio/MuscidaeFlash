@@ -1,5 +1,11 @@
-.banner .pure-menu-open {
-	background-color: #191818;
+body {
+	background-color: #141818;
+	color: #fff;
+}
+
+.banner .pure-menu-open.pure-menu-fixed {
+	background-color: #555;
+	border: none;
 }
 .banner .pure-menu-open a.pure-menu-heading {
 	color: #fff;
@@ -14,7 +20,53 @@
 	padding: 3em;
 }
 
+.content-wrapper h2 {
+	margin: 3px;
+	text-align: center;
+}
+
+.content-wrapper h2 strong {
+	color: #fa0;
+}
+
+.hospital {
+	cursor: pointer;
+	border-radius: 3px;
+	border-bottom: 1px solid rgba( 255, 255, 255, 0.4 );
+}
+
+.hospital:hover {
+	background-color: rgba( 255, 255, 255, 0.2 );
+}
+
+.hospital h3 {
+	font-size: 1em;
+	margin: 0px;
+}
+
+.hospital .comments p {
+	font-size: 0.8em;
+	margin: 3px;
+}
+
+.hospital .name {
+	line-height: 60px;
+	height: 60px;
+}
+
+.hospital.show .comments {
+}
+
+.hospital .comments {
+	height: 40px;
+	padding: 10px;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
 #map-canvas {
 	height: 500px;
 	width: 100%;
+	margin-bottom: 2em;
 }

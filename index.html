@@ -20,11 +20,24 @@
 			</div>
 		</div>
 		<div class="content-wrapper">
-			<div class="pure-g-r">
-				<div class="pure-u-1">
-				</div>
-				<div class="pure-u-1">
-					<div id="map-canvas">
+			<h2> 
+				目前共有 <strong data-bind="text: totalComments"></strong> 位護理人員認領了
+				<strong data-bind="text: hospitals().length"></strong> 隻虎神
+			</h2>
+			<div id="map-canvas">
+			</div>
+			<h2> 虎神排行榜 </h2>
+			<div class="hospital-list" data-bind="foreach: hospitals">
+				<div class="pure-g-r hospital" data-bind="">
+					<div class="pure-u-2-5 name">
+						<h3> 
+							<span data-bind="text: $index()+1"></span>. 
+							<span data-bind="text: hospital"></span>
+							x <strong data-bind="text: comments.length"></strong>
+						</h3>
+					</div>
+					<div class="pure-u-3-5 comments" data-bind="foreach: comments">
+						<p data-bind="text: $data"></p>
 					</div>
 				</div>
 			</div>
