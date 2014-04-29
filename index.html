@@ -10,36 +10,55 @@
 		<meta property="og:image" content="images/marker.100.png" />
 		<title>虎神快閃認領行動</title>
 		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
 		<link rel="stylesheet" href="css/main.css">
 	</head>
 	<body>
 		<div class="banner">
 			<div class="pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
-				<a href="index.html" class="pure-menu-heading">虎神快閃認領行動</a>
+				<a href="index" class="pure-menu-heading">虎神快閃</a>
 				<ul>
+					<li class="pure-menu-selected"><a href="#"> 認領行動 </a></li>
+					<li><a href="about"> 關於 </a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="content-wrapper">
+
+			<div class="welcome"> 
+				<h1> 恭喜<strong data-bind="text: topFly().hospital"></strong>領先眾虎神！</h1>
+				<p> 
+					<a href="#map-canvas" data-bind="click: viewTop"><i class="fa fa-smile-o"></i> 看榜首</a>
+					<a href="#map-canvas" data-bind="click: viewAll"><i class="fa fa-globe"></i> 看全部</a>
+					<a href="#order"><i class="fa fa-sort-amount-desc"></i> 看排名</a>
+				</p>
+			</div>
+
+			<div id="map-canvas"></div>
 			<h2> 
 				目前共有 <strong data-bind="text: totalComments"></strong> 位護理人員認領了
 				<strong data-bind="text: hospitals().length"></strong> 隻虎神
 			</h2>
-			<div id="map-canvas">
-			</div>
-			<h2> 虎神排行榜 </h2>
+			<h2 id="order"> 虎神排行榜 </h2>
 			<div class="hospital-list" data-bind="foreach: hospitals">
 				<div class="pure-g-r hospital" data-bind="">
-					<div class="pure-u-2-5 name">
+					<div class="pure-u-1">
 						<h3> 
-							<span data-bind="text: $index()+1"></span>. 
 							<span data-bind="text: hospital"></span>
-							x <strong data-bind="text: comments.length"></strong>
+							<!-- ko foreach: comments.slice(0,10) -->
+							<i class="fa fa-thumbs-down"></i>
+							<!-- /ko -->
+							<!-- ko if: comments.length > 10 -->
+							<i class="fa fa-thumbs-down"></i>+<span data-bind="text: (comments.length-10)"></span>
+							<!-- /ko -->
 						</h3>
 					</div>
-					<div class="pure-u-3-5 comments" data-bind="foreach: comments">
+					<!-- ko foreach: comments.slice(0, 4) -->
+					<div class="pure-u-1-4 comment">
 						<p data-bind="text: $data"></p>
 					</div>
+					<!-- /ko -->
 				</div>
 			</div>
 		</div>
