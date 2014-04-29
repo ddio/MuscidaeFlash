@@ -7,11 +7,10 @@ function ViewModel() {
 
 	this.geoMap = {};
 	this.hospitals = ko.observable();
-	this.map = new google.maps.Map( $('#map')[0] );
 
+	this.map = new google.maps.Map( document.getElementById( 'map-canvas' ) );
 
 	$.ajax( ST_URL, {
-		cache: false,
 		dataType: 'json',
 		context: this
 	})
@@ -46,6 +45,25 @@ function ViewModel() {
 }
 
 ViewModel.prototype.initMap = function() {
+
+	var targetItems = this.hospitals().slice( 0, MAX_N_HOSPITAL ),
+		boundry = new google.maps.LatLngBounds();
+
+	_.each( targetItems, function( item, i ) {
+
+		var position = new google.maps.LatLng( item.lat, item.lng ),
+			marker = new google.maps.Marker({
+				title: item.hospital,
+				position: position,
+				map: this.map
+			});
+
+		boundry.extend( position );
+
+		//TODO: add click event
+	}, this);
+
+	this.map.fitBounds( boundry );
 }
 
 $( function() {
