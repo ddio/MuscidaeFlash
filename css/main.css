@@ -50,6 +50,11 @@ body {
 	line-height: 1.6em;
 }
 
+#disqus_thread {
+	max-width: 500px;
+	margin: 24px auto 0px;
+}
+
 .content-wrapper {
 
 	width: 100%;
