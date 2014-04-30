@@ -63,6 +63,10 @@ function ViewModel() {
 
 		}, this);
 
+		newHospitals = _.filter( newHospitals, function( hospital ) {
+			return hospital.comments.length > 0;
+		});
+
 		this.hospitals(
 			_.sortBy( newHospitals, function( hospital ) { 
 				return hospital.comments.length * -1; 
