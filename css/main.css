@@ -3,6 +3,11 @@ body {
 	color: #fff;
 }
 
+.banner .fb-like {
+	float: right;
+	padding: 10px;
+}
+
 .banner .pure-menu-open.pure-menu-fixed {
 	background-color: #555;
 	border: none;
