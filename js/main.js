@@ -17,7 +17,7 @@ function ViewModel() {
 	}, this);
 	this.totalComments = ko.observable(0);
 
-	this.map = new google.maps.Map( document.getElementById( 'map-canvas' ) );
+	this.map = new google.maps.Map( document.getElementById( 'map-canvas' ), { zoom: 9 } );
 	this.markers = [];
 	this.mapBoundry = null;
 
@@ -112,8 +112,13 @@ ViewModel.prototype.initMap = function() {
 		//TODO: add click event
 	}, this);
 
-	this.map.fitBounds( boundry );
 	this.mapBoundry = boundry;
+
+	if( this.markers.length == 1 ) {
+		this.viewTop();
+	} else {
+		this.viewAll();
+	}
 }
 
 $( function() {
