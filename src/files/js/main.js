@@ -3,8 +3,6 @@
 var ST_URL = 'https://script.google.com/macros/s/AKfycbwFse-INUkS6qvZ2waHiBYe_skn1CBp8TqPPK1C9ksvYfwJyAIW/exec',
 	MAX_N_HOSPITAL = 50;
 
-//ST_URL = 'data/tmp.json';
-
 function ViewModel() {
 
 	this.geoMap = {};
@@ -41,38 +39,15 @@ function ViewModel() {
 	})
 	.done( function( resp ) {
 
-		this.geoMap = resp.map;
-
-		var dict = resp.map.hospitals,
-			newHospitals = _.clone( resp.map.locations ),
-			totalComments = 0;
-
-		_.each( newHospitals, function( hospital, id ) {
-			hospital.id = id;
-			hospital.comments = [];
-		});
-
-		_.each( resp.comments, function( hospital ) {
-
-			var fullname = hospital.city + hospital.name;
-			if( fullname in dict ) {
-				var comments = newHospitals[ dict[fullname].id ].comments;
-				comments.push.apply( comments, hospital.comments );
-			}
-			totalComments += hospital.comments.length;
-
-		}, this);
-
-		newHospitals = _.filter( newHospitals, function( hospital ) {
-			return hospital.comments.length > 0;
-		});
-
 		this.hospitals(
-			_.sortBy( newHospitals, function( hospital ) { 
+			_.sortBy( resp, function( hospital ) { 
 				return hospital.comments.length * -1; 
 			}));
 
-		this.totalComments( totalComments );
+		this.totalComments(
+			_.reduce( resp, function( memo, hospital ) {
+				return memo + hospital.comments.length
+			}, 0));
 
 		this.initMap();
 	});
@@ -95,7 +70,7 @@ ViewModel.prototype.initMap = function() {
 
 		var position = new google.maps.LatLng( item.lat, item.lng ),
 			marker = new google.maps.Marker({
-				title: item.hospital,
+				title: item.name,
 				position: position,
 				map: this.map,
 				icon: 'images/marker.'+iconSize+'.png'

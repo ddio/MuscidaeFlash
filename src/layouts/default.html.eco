@@ -18,6 +18,7 @@
 </head>
 <body>
 	<%- @partial('shared_plugin') %>
+	<%- @partial('banner') %>
 	<%- @content %>
 </body>
 </html>
