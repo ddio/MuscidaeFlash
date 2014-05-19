@@ -11,7 +11,7 @@ function ViewModel() {
 		if( this.hospitals().length > 0 ) {
 			return this.hospitals()[0];
 		}
-		return { hospital: '' };
+		return { name: '' };
 	}, this);
 	this.totalComments = ko.observable(0);
 

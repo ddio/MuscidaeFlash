@@ -78,7 +78,7 @@ body {
 	margin: 0px;
 }
 
-.content-wrapper .welcome h1 strong {
+.content-wrapper h1 strong {
 	color: #fa0;
 	font-size: 1.4em;
 }
@@ -107,6 +107,40 @@ body {
 	color: #fa0;
 }
 
+.content-wrapper.single-hospital {
+	max-width: 800px;
+	margin: auto;
+}
+
+.single-hospital .comment-list {
+	max-width: 600px;
+	margin: auto;
+}
+
+.single-hospital .comment {
+	border: rgba( 255, 255, 255, 0.8 ) solid 1px;;
+	border-radius: 6px;
+	position: relative;
+	padding: 16px;
+	margin: 24px 8px;;
+}
+
+.single-hospital .comment .index {
+	background-color: #141818;
+	display: block;
+	position: absolute;
+	top: -0.5em;
+	left: 1em;
+	padding: 0px 6px;
+	font-size: 2em;
+	line-height: 1em;
+}
+
+.single-hospital .comment pre {
+	font-size: 1.1em;
+	line-height: 1.2em;
+}
+
 .hospital {
 	cursor: pointer;
 	border-radius: 3px;
@@ -119,6 +153,10 @@ body {
 
 .hospital:hover {
 	background-color: rgba( 255, 255, 255, 0.2 );
+}
+
+.hospital a {
+	color: #fff;
 }
 
 .hospital h3 {

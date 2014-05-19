@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-tw">
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta property="og:title" content="虎神快閃認領行動 | <%= @document.title %>" />
+	<meta property="og:url" content="http://ddio.github.io/MuscidaeFlash/<%= @document.title %>" />
+	<meta property="og:image" content="http://ddio.github.io/MuscidaeFlash/images/marker.png" />
+	<meta property="og:description" content="我們以digital命名，目的在於揭露醫院以「健康」為名、行「賺錢」為實的種種不為人知的真相。digital為醫護術語，臨床常見於病人解便困難時，用手指把肛門解不出來的糞挖出來。" />
+
+	<title>虎神快閃認領行動</title>
+
+	<link rel="stylesheet" href="//yui.yahooapis.com/pure/0.4.2/pure-min.css">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<%- @partial('shared_plugin') %>
+	<%- @partial('banner') %>
+	<div class="content-wrapper single-hospital">
+		<h1>已有 <strong data-bind="text: comments().length"></strong> 位虎神認領了<strong id="hospital-id"><%= @document.title %></strong>！</h1>
+		<div class="comment-list" data-bind="foreach: comments">
+			<div class="comment">
+				<strong class="index" data-bind="text: $index()+1"></strong>
+				<pre data-bind="text: $data"></pre>
+			</div>
+		</div>
+		<div id="disqus_thread"></div>
+	</div>
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
+	
+	<script src="js/hospital.js"></script>
+
+</body>
+</html>
+
