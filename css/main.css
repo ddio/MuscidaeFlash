@@ -1,0 +1,187 @@
+body {
+	background-color: #141818;
+	color: #fff;
+}
+
+.banner .fb-like {
+	float: right;
+	padding: 10px;
+}
+
+.banner .pure-menu-open.pure-menu-fixed {
+	background-color: #555;
+	border: none;
+}
+.banner .pure-menu-open a.pure-menu-heading {
+	color: #fff;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.banner .pure-menu-open li.pure-menu-selected a {
+	color: #fa0;
+}
+
+.banner .pure-menu-open li a {
+	color: #fff;
+}
+
+.banner .pure-menu-open li a:hover {
+	background: none;
+	text-decoration: underline;
+}
+
+.content-wrapper.about h2 {
+	color: #fa0;
+}
+
+.content-wrapper.about a {
+	color: #777;
+}
+
+.content-wrapper.about p {
+	text-indent: 1em;
+	margin: 12px auto;
+	max-width: 500px;
+	line-height: 1.6em;
+}
+
+.content-wrapper.about ol {
+	max-width: 500px;
+	margin: 12px auto;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding-left: 3em;
+	line-height: 1.6em;
+}
+
+#disqus_thread {
+	max-width: 500px;
+	margin: 24px auto 0px;
+}
+
+.content-wrapper {
+
+	width: 100%;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 3em;
+}
+
+.content-wrapper div.welcome {
+	text-align: center;
+	font-size: 1.2em;
+	margin: 6em 0em;
+}
+
+.content-wrapper .welcome h1 {
+	margin: 0px;
+}
+
+.content-wrapper h1 strong {
+	color: #fa0;
+	font-size: 1.4em;
+}
+
+.content-wrapper .welcome p {
+	margin: 0px;
+}
+
+.content-wrapper .welcome a {
+	padding: 0px 10px;
+	color: #ccc;
+	text-decoration: none;
+}
+
+.content-wrapper .welcome a:hover {
+	color: #fff;
+}
+
+.content-wrapper h2 {
+	margin: 0em;
+	margin-top: 2em;
+	text-align: center;
+}
+
+.content-wrapper h2 strong {
+	color: #fa0;
+}
+
+.content-wrapper.single-hospital {
+	max-width: 800px;
+	margin: auto;
+}
+
+.single-hospital .comment-list {
+	max-width: 600px;
+	margin: auto;
+}
+
+.single-hospital .comment {
+	border: rgba( 255, 255, 255, 0.8 ) solid 1px;;
+	border-radius: 6px;
+	position: relative;
+	padding: 16px;
+	margin: 24px 8px;;
+}
+
+.single-hospital .comment .index {
+	background-color: #141818;
+	display: block;
+	position: absolute;
+	top: -0.5em;
+	left: 1em;
+	padding: 0px 6px;
+	font-size: 2em;
+	line-height: 1em;
+}
+
+.single-hospital .comment pre {
+	font-size: 1.1em;
+	line-height: 1.2em;
+}
+
+.hospital {
+	cursor: pointer;
+	border-radius: 3px;
+	margin-top: 2em;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 12px;
+	border: 1px solid rgba( 255, 255, 255, 0.1 );
+}
+
+.hospital:hover {
+	background-color: rgba( 255, 255, 255, 0.2 );
+}
+
+.hospital a {
+	color: #fff;
+}
+
+.hospital h3 {
+	font-size: 1.2em;
+	margin: 0px;
+	margin-bottom: 6px;
+}
+
+.hospital .comment {
+	height: 120px;
+	padding: 6px;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	overflow: hidden;
+	font-size: 0.8em;
+	margin-bottom: 6px;
+}
+
+.hospital .comment:not(:last-child) {
+	border-right: 1px solid rgba( 255, 255, 255, 0.1 );
+}
+
+#map-canvas {
+	height: 500px;
+	width: 100%;
+	margin-bottom: 2em;
+	border-radius: 6px;
+}
